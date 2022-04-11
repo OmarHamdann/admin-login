@@ -28,7 +28,7 @@ const createNewUser = async (req, res) => {
   });
 };
 
-/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 //get all users
 
 const getAllUsers = (req, res) => {
@@ -45,9 +45,38 @@ const getAllUsers = (req, res) => {
   });
 };
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+//update user
+
+
+
+const updateUserById = (req, res) => {
+
+
+  const query = `UPDATE users SET ? WHERE id=?`
+  const body = req.body
+  const id = req.params.id
+  const data = [body, id]
+
+  connection.query(query, data, (err, result) => {
+      if (err) {
+          res.json(err)
+
+      }
+      else {
+          res.json(result)
+
+      }
+  })
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//delete user
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////=================================================
 
 module.exports = {
   createNewUser,
   getAllUsers,
+  updateUserById
 };
