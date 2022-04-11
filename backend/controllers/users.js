@@ -48,35 +48,41 @@ const getAllUsers = (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////////////////
 //update user
 
-
-
 const updateUserById = (req, res) => {
-
-
-  const query = `UPDATE users SET ? WHERE id=?`
-  const body = req.body
-  const id = req.params.id
-  const data = [body, id]
+  const query = `UPDATE users SET ? WHERE id=?`;
+  const body = req.body;
+  const id = req.params.id;
+  const data = [body, id];
 
   connection.query(query, data, (err, result) => {
-      if (err) {
-          res.json(err)
-
-      }
-      else {
-          res.json(result)
-
-      }
-  })
-}
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+};
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 //delete user
+const deleteUserById = (req, res) => {
+  const query = `DELETE FROM users WHERE id=?`;
+  const id = req.params.id;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////=================================================
 
 module.exports = {
   createNewUser,
   getAllUsers,
-  updateUserById
+  updateUserById,
+  deleteUserById,
 };
