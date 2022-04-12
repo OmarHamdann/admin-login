@@ -41,8 +41,7 @@ const Login = ({ setShowLogin }) => {
       .then((result) => {
         dispatch(login(result.data.token));
         localStorage.setItem("userToken", result.data.token);
-        localStorage.setItem("userName", result.data.userName);
-        localStorage.setItem("myRole", result.data.role);
+
         localStorage.setItem("myUserId", result.data.userId);
         if (result.data.role === 2) {
           navigate("/ProductsTable");
@@ -141,7 +140,7 @@ const Login = ({ setShowLogin }) => {
         </span>
       </div>
       <span className="text-danger"></span>
-      
+
       <div className="form-group mt-4">
         <button
           type="submit"

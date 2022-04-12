@@ -60,7 +60,6 @@ const Home = () => {
     await axios
       .get(`/users`)
       .then((result) => {
-        console.log(result.data.result);
         setUsers(result.data.result);
         setShowTable(true);
       })
@@ -91,6 +90,7 @@ const Home = () => {
     const body = {
       userName,
       email,
+      password,
     };
 
     try {
@@ -204,9 +204,9 @@ const Home = () => {
         </thead>
         <tbody>
           {showTable &&
-            users?.map((user) => {
+            users?.map((user, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{user.id}</td>
                   <td>
                     {updateBox && userId === user.id ? (

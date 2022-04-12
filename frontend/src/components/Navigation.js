@@ -67,7 +67,7 @@ const Navigation = () => {
               ) : (
                 <>
                   <Nav.Link className="fw-bold" style={{ color: "#198754" }}>
-                    {localStorage.getItem("userName")}
+                    Welcome
                   </Nav.Link>
 
                   <Nav.Link
