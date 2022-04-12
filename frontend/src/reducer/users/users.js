@@ -24,7 +24,7 @@ const usersReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         users: state.users.filter((element) => {
-          return element.id != payload;
+          return element.id !== payload;
         }),
       };
 
