@@ -6,7 +6,7 @@ import {
   Modal,
   Form,
   Table,
-  Pagination,
+ 
 } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { RiDeleteBinLine } from "react-icons/ri";
