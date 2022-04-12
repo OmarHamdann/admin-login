@@ -37,7 +37,7 @@ const Login = ({ setShowLogin }) => {
     //show backend server
     axios
       //send data from body object
-      .post("http://localhost:5000/login", body)
+      .post("/login", body)
       .then((result) => {
         dispatch(login(result.data.token));
         localStorage.setItem("userToken", result.data.token);
@@ -62,7 +62,7 @@ const Login = ({ setShowLogin }) => {
   //login with google
   const addNewUserWithGoogle = async (username, email) => {
     try {
-      const result = await axios.post("http://localhost:5000/users", {
+      const result = await axios.post("/users", {
         userName: username,
         email: email,
         password: "123",

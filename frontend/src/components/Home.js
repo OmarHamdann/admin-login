@@ -37,7 +37,7 @@ const Home = () => {
     };
 
     await axios
-      .post("http://localhost:5000/users", body)
+      .post("/users", body)
       .then((result) => {
         dispatch(setUser(body));
         getUsers();
@@ -58,7 +58,7 @@ const Home = () => {
 
   const getUsers = async () => {
     await axios
-      .get(`http://localhost:5000/users`)
+      .get(`/users`)
       .then((result) => {
         console.log(result.data.result);
         setUsers(result.data.result);
@@ -94,7 +94,7 @@ const Home = () => {
     };
 
     try {
-      await axios.put(`http://localhost:5000/users/${id}`, body);
+      await axios.put(`/users/${id}`, body);
 
       dispatch(updateHotelById(body));
       Swal.fire({
@@ -116,7 +116,7 @@ const Home = () => {
 
   const deleteUser = (id) => {
     axios
-      .delete(`http://localhost:5000/users/${id}`)
+      .delete(`/users/${id}`)
       .then((res) => {
         dispatch(deleteUserById(id));
         getUsers();
