@@ -1,13 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Container,
-  Modal,
-  Form,
-  Table,
- 
-} from "react-bootstrap";
+import { Button, Container, Modal, Form, Table } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "../App.css";
@@ -18,6 +11,7 @@ import {
   updateHotelById,
   deleteUserById,
 } from "../reducer/users/users";
+
 const Home = () => {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
@@ -28,11 +22,12 @@ const Home = () => {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
   const [elementId, setElementId] = useState([]);
-  const [skip, setSkip] = useState(0);
-  const [page, setPage] = useState(1);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+
+  // create user
 
   const createUser = async () => {
     const body = {
@@ -40,10 +35,9 @@ const Home = () => {
       email,
       password,
     };
-    //add user
+
     await axios
       .post("http://localhost:5000/users", body)
-
       .then((result) => {
         dispatch(setUser(body));
         getUsers();
@@ -61,6 +55,7 @@ const Home = () => {
   };
 
   //get all users
+
   const getUsers = async () => {
     await axios
       .get(`http://localhost:5000/users`)
@@ -75,7 +70,8 @@ const Home = () => {
   };
   //==========================================================================
 
-  //update user
+  //update user handler
+
   const [updateBox, setUpdateBox] = useState(false);
 
   const handleUpdateClick = (user) => {
@@ -88,6 +84,8 @@ const Home = () => {
 
     if (updateBox) updateUser(user.id);
   };
+
+  // update user function
 
   const updateUser = async (id) => {
     const body = {
@@ -113,6 +111,9 @@ const Home = () => {
   };
 
   //==========================================================================
+
+  //delete user
+
   const deleteUser = (id) => {
     axios
       .delete(`http://localhost:5000/users/${id}`)
@@ -125,13 +126,18 @@ const Home = () => {
       });
   };
 
+  //==========================================================================
+
+  //useEffect to get all users
+
   useEffect(() => {
     getUsers();
   }, []);
-  
 
+  //==========================================================================
   return (
     <Container className="marginAdmin">
+      {/* create user */}
       <Modal
         show={show}
         onHide={handleClose}
@@ -153,28 +159,24 @@ const Home = () => {
               />
             </Form.Group>
 
-            
-              <Form.Group className="mb-3 ms-4 col-11">
-                <Form.Control
-                  type="email"
-                  placeholder="Email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3 ms-4 col-11">
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-              </Form.Group>
-           
-
-          
+            <Form.Group className="mb-3 ms-4 col-11">
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3 ms-4 col-11">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -189,7 +191,7 @@ const Home = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
+      {/* users table */}
       <h2>Users Table</h2>
       <Table striped bordered hover variant="dark">
         <thead>
@@ -288,7 +290,6 @@ const Home = () => {
         </tbody>
       </Table>
 
-     
       <div className="create ">
         <Button className="col-2" variant="success" onClick={handleShow}>
           Create

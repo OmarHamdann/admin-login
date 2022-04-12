@@ -10,23 +10,24 @@ const login = (req, res) => {
   const data = [email];
   connection.query(query, data, (err, results) => {
     if (results.length > 0) {
+      //check password is correct or not
       bcrypt.compare(password, results[0].password, (err, respons) => {
         if (err) res.json(err);
         if (respons) {
+          //create token for user
           const paylod = {
             userId: results[0].id,
             userName: results[0].userName,
           };
-
+          // sign token with payload and secret key
           const secret = process.env.SECRET;
-
           const token = jwt.sign(paylod, secret);
 
           res.status(200).json({
             success: true,
             message: "Valid login credentials",
             token,
-            userName: results[0].email,
+            userName: results[0].usr,
             userId: results[0].id,
           });
         } else {

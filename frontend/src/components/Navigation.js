@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import { logout } from "../reducer/login/index";
 import { useDispatch, useSelector } from "react-redux";
-
 import { Container, Navbar, Nav, Modal } from "react-bootstrap";
-
 import { MdLogout } from "react-icons/md";
 
 const Navigation = () => {
+  //redux state
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -26,12 +25,11 @@ const Navigation = () => {
       <Navbar bg="light" expand="lg" className="px-4 py-0 fixed-top  ">
         <Container fluid>
           <Navbar.Brand href="/home">
-          
             <img
               src="https://res.cloudinary.com/cryptoteam/image/upload/v1649760615/guvzzjxagltloe6leb6u.svg"
               width={140}
               height={40}
-              alt="Good Night"
+              alt="admin logo"
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />

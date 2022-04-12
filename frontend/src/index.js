@@ -8,7 +8,7 @@ import store from "./reducer/store";
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </Router>,
   document.getElementById("root")

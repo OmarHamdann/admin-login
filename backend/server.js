@@ -15,9 +15,11 @@ app.use(express.json());
 const usersRouter = require("./routes/users");
 const loginRouter = require("./routes/login");
 
-
+//endpionts
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
+
+//run server in port 5000
 
 const PORT = 5000;
 

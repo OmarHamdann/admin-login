@@ -9,16 +9,16 @@ const usersReducer = (state = initialState, { type, payload }) => {
         ...state,
         users: payload,
       };
-case "UPDATE_USER":
-  return {
-    ...state,
-    users: state.users.map((user) => {
-      if (user.id === payload.id) {
-        return payload;
-      }
-      return user;
-    }),
-  };
+    case "UPDATE_USER":
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          if (user.id === payload.id) {
+            return payload;
+          }
+          return user;
+        }),
+      };
 
     case "DELETE_USERS":
       return {
@@ -44,7 +44,6 @@ export const setUser = (users) => {
 export const updateHotelById = (user) => {
   return { type: "UPDATE_USER", payload: user };
 };
-
 
 export const deleteUserById = (id) => {
   return { type: "DELETE_USER", payload: id };

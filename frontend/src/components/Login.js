@@ -2,23 +2,21 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import GoogleLogin from "react-google-login";
 
 //redax
 import { login } from "../reducer/login/index";
 import { useDispatch } from "react-redux";
-//********************** */
 
+//components
 const Login = ({ setShowLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const onSuccess = (response) => {
     dispatch(login(response.tokenId));
+    //save token to local storage
     localStorage.setItem("userToken", response.tokenId);
-
     localStorage.setItem("userName", response.profileObj.name);
     navigate("/home");
-
     addNewUserWithGoogle(response.profileObj.name, response.profileObj.email);
   };
   const onFailure = (response) => {
@@ -27,18 +25,14 @@ const Login = ({ setShowLogin }) => {
 
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
-
   const [message, setmessage] = useState("");
-
   const navigate = useNavigate();
-
   const body = {
     email: email,
     password: password,
   };
-
+  //login with email and password
   const loginUser = () => {
     //show backend server
     axios
@@ -65,14 +59,13 @@ const Login = ({ setShowLogin }) => {
 
     //================================================================
   };
-
+  //login with google
   const addNewUserWithGoogle = async (username, email) => {
     try {
       const result = await axios.post("http://localhost:5000/users", {
         userName: username,
         email: email,
         password: "123",
-        role_id: "1",
       });
       if (result.data.success) {
         navigate("/home");
@@ -115,6 +108,7 @@ const Login = ({ setShowLogin }) => {
           <label> Password </label>
         </div>
         <span className="input-group-text">
+          {/* show and hide password */}
           {showPassword ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -147,25 +141,7 @@ const Login = ({ setShowLogin }) => {
         </span>
       </div>
       <span className="text-danger"></span>
-      <div className="form-check">
-        <input
-          type="checkbox"
-          name="remember_me"
-          id="remember_me"
-          className="form-check-input"
-        />
-        <label className="form-check-label" for="remember_me">
-          Remember Me
-        </label>
-        <a
-          href="#"
-          className="float-end open-modal"
-          data-current="loginModal"
-          data-target="forgotPasswordModal"
-        >
-          Forgot Password
-        </a>
-      </div>
+      
       <div className="form-group mt-4">
         <button
           type="submit"
@@ -181,7 +157,6 @@ const Login = ({ setShowLogin }) => {
 
         {message && <div className="alert alert-danger">{message}</div>}
 
-       
         <GoogleLogin
           className="googleButton w-100 text-center justify-content-center"
           clientId="284516947033-o1so93qbr9524dea3slu3ik2j01aqtpp.apps.googleusercontent.com"
