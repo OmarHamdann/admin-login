@@ -41,7 +41,7 @@ export const setUser = (users) => {
   return { type: "SET_USERS", payload: users };
 };
 
-export const updateHotelById = (user) => {
+export const updateUserlById = (user) => {
   return { type: "UPDATE_USER", payload: user };
 };
 

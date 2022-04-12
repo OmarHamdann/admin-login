@@ -8,7 +8,7 @@ import { BsPencilSquare } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import {
   setUser,
-  updateHotelById,
+  updateUserlById,
   deleteUserById,
 } from "../reducer/users/users";
 
@@ -96,7 +96,7 @@ const Home = () => {
     try {
       await axios.put(`/users/${id}`, body);
 
-      dispatch(updateHotelById(body));
+      dispatch(updateUserlById(body));
       Swal.fire({
         icon: "success",
         title: "Your work has been saved",
