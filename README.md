@@ -26,6 +26,8 @@ This Website is an admin CRUD operation (create, read, update and delete user).
 ## 🏁 Getting Started <a name = "getting_started"></a>
 These instructions will get you a copy of the project and run it on your local machine for development and testing purposes.
 
+Email: admin@admin.com
+Password: admin
 
 ### Prerequisites
 
