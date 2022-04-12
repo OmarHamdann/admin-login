@@ -17,10 +17,6 @@
 - [About](#about)
 - [Getting Started](#getting_started)
 - [Built Using](#built_using)
-- [Project Digram](#project_digram)
-- [Acknowlegments](#acknowlegments)
-- [Project Management System](#Project_Management_System)
-- [Guided By](#guided_by)
 
  
 ## 🧐 About <a name = "about"></a>
@@ -45,19 +41,13 @@ clone the repository to your local machin
 https://github.com/OmarHamdann/admin-login
 
 ```
-You need to make sure that there is a **package.json** file
-if the apackage.json doesn't exist, run the following commands 
-```
-npm init -y
-npm i
-```
 open root folder and install required packages
 ```
 npm i
 ```
 open client folder and install required packages
 ```
-cd client && npm i
+cd frontend && npm i
 ```
 
 to run the client side, use the following command
