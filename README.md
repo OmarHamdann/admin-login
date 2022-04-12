@@ -17,10 +17,6 @@
 - [About](#about)
 - [Getting Started](#getting_started)
 - [Built Using](#built_using)
-- [Project Digram](#project_digram)
-- [Acknowlegments](#acknowlegments)
-- [Project Management System](#Project_Management_System)
-- [Guided By](#guided_by)
 
  
 ## 🧐 About <a name = "about"></a>
