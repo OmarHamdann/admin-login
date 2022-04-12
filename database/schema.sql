@@ -1,6 +1,6 @@
 
-CREATE DATABASE userData;
-USE  userData;
+-- CREATE DATABASE userData;
+USE  sql11485339;
 
 CREATE TABLE users(
     id INT AUTO_INCREMENT NOT NULL,
@@ -9,3 +9,5 @@ CREATE TABLE users(
     password VARCHAR(255),
     PRIMARY KEY (id)
 );
+
+INSERT INTO users (userName, email, password) VALUES ('admin', 'admin@admin.com', 'admin');
