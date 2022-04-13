@@ -78,7 +78,7 @@ const Home = () => {
     setUserId(user.id);
     setUserName(user.userName);
     setEmail(user.email);
-
+    setPassword(user.password);
     setElementId([...elementId, user.id]);
 
     if (updateBox) updateUser(user.id);

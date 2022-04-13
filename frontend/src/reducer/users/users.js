@@ -12,7 +12,7 @@ const usersReducer = (state = initialState, { type, payload }) => {
     case "UPDATE_USER":
       return {
         ...state,
-        users: state.users.map((user) => {
+        users: state.users?.map((user) => {
           if (user.id === payload.id) {
             return payload;
           }
